@@ -9,10 +9,11 @@ input[type=text]{
     display: inline-block; 
     border: 1px solid #ccc; 
     box-sizing: border-box; 
+    background-color: #a8e999;
 }  
     
-button { 
-    background-color: #4CAF50; 
+input[type=submit] { 
+    background-color:#42a680; 
     color: white; 
     padding: 14px 20px; 
     margin: 8px 0; 

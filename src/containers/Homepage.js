@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import NavBar from '../components/NavBar';
 import Search from '../components/Search';
+import Image from '../components/Image';
+import "./Styling.css"
 
 class Homepage extends Component {
     render() {
@@ -9,6 +11,7 @@ class Homepage extends Component {
                 <NavBar/>
                 <div className="body">
                     <Search/>
+                    <Image search="weather"/>
                 </div>
             </div>
         );

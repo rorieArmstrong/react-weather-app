@@ -1,45 +1,46 @@
 import React, { Component } from 'react';
-import axios from "axios"
+import './Search.css'
 
 class Search extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
           city: '',
-          country: ''
-        };
+          country: '',
+          data: null
+        }
         this.handleChange = this.handleChangeCity.bind(this);
         this.handleChange = this.handleChangeCountry.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        }
+    }
 
     handleChangeCountry(event) {
         event.preventDefault()
-        this.setState({Country: event.target.value})
+        return this.setState({Country: event.target.value})
     };
 
     handleChangeCity(event) {
         event.preventDefault()
-        this.setState({city: event.target.value})
+        return this.setState({city: event.target.value})
     };
 
     handleSubmit(event) {
         event.preventDefault()
-        const userQuery =  this.state.value
-        console.log(userQuery)
-        axios.get(`http://www.omdbapi.com/?s=${userQuery}&apikey=71ef6486`)
-        .then(results => 
-          {
-              this.props.searchResults(results.data.Search)}
-    )};
+        fetch(`api.openweathermap.org/data/2.5/weather?q=London`)
+        .then(response => response.json)
+        .then(data => {return this.setState({data: data})})
+    };
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="City" value={this.state.value} onChange={this.handleChangeCity} />
-                <input type="text" placeholder="Country" value={this.state.value} onChange={this.handleChangeCountry} />
-                <input type="submit" value="Submit" />
-            </form>
+            <div className="container">
+                <h3>Weather Report</h3>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" placeholder="City" value={this.state.value} onChange={this.handleChangeCity} />
+                    <input type="text" placeholder="Country" value={this.state.value} onChange={this.handleChangeCountry} />
+                    <input type="submit" value="Search" />
+                </form>
+            </div>
         );
     }
 }
