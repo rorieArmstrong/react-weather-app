@@ -1,5 +1,6 @@
 form { 
     border: 3px solid #f1f1f1; 
+    height: 200px;
 } 
     
 input[type=text]{ 
@@ -12,15 +13,21 @@ input[type=text]{
     background-color: #a8e999;
 }  
     
-input[type=submit] { 
+.link { 
+    padding: 1em 1.5em;
+    text-decoration: none;
     background-color:#42a680; 
     color: white; 
     padding: 14px 20px; 
-    margin: 8px 0; 
+    margin-top: 8px 10px; 
     border: none; 
     cursor: pointer; 
-    width: 100%;
+    width: 50vw;
     align-self: center;
+}
+
+.inputs{
+    margin-bottom: 20px;
 }
     
 .container { 

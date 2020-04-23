@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Search.css'
+import {Link} from "react-router-dom";
 
 class Search extends Component {
     constructor() {
@@ -16,7 +17,7 @@ class Search extends Component {
 
     handleChangeCountry(event) {
         event.preventDefault()
-        return this.setState({Country: event.target.value})
+        return this.setState({country: event.target.value})
     };
 
     handleChangeCity(event) {
@@ -26,10 +27,7 @@ class Search extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&APPID=c0abf36037001046e84d8c4e775ceb72`)
-        .then(response => response.json())
-        .then(data => {return this.setState({data: data})})
-        .catch(error => console.log(error))
+        return <Link to={`/search/${this.state.city}&${this.state.country}`}/>
     };
 
     render() {
@@ -37,9 +35,11 @@ class Search extends Component {
             <div className="container">
                 <h3>Weather Report</h3>
                 <form onSubmit={this.handleSubmit} data-testid="search-form">
-                    <input type="text" placeholder="City" value={this.state.value} onChange={this.handleChangeCity} />
-                    <input type="text" placeholder="Country" value={this.state.value} onChange={this.handleChangeCountry} />
-                    <input type="submit" value="Search" />
+                    <div className="inputs">
+                        <input type="text" placeholder="City" value={this.state.value} onChange={this.handleChangeCity} />
+                        <input type="text" placeholder="Country" value={this.state.value} onChange={this.handleChangeCountry} />
+                    </div>
+                    <Link className="link" to={`/search/${this.state.city}&${this.state.country}`}>Search</Link>
                 </form>
             </div>
         );
