@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Search.css'
-import {Link} from "react-router-dom";
+import {Link, BrowserRouter as Router} from "react-router-dom";
 
 class Search extends Component {
     constructor() {
@@ -39,7 +39,9 @@ class Search extends Component {
                         <input type="text" placeholder="City" value={this.state.value} onChange={this.handleChangeCity} />
                         <input type="text" placeholder="Country" value={this.state.value} onChange={this.handleChangeCountry} />
                     </div>
-                    <Link className="link" to={`/search/${this.state.city}&${this.state.country}`}>Search</Link>
+                    <Router>
+                        <Link className="link" to={`/search/${this.state.city}&${this.state.country}`}>Search</Link>
+                    </Router>
                 </form>
             </div>
         );

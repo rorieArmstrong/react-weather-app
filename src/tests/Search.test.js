@@ -6,8 +6,8 @@ it('renders without crashing', () => {
     render(<Search />);
 });
 
-it('Displays 3 inputs', () => {
+it('Displays 2 inputs', () => {
     const { getByTestId } = render(<Search />);
     const form = getByTestId('search-form');
-  expect(form.children.length).toBe(3);  
+  expect(form.children.length).toBe(2);  
 });

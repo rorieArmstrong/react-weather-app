@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import {Link} from "react-router-dom";
+import {Link, BrowserRouter as Router} from "react-router-dom";
 import './NavBar.css'
 
 class NavBar extends Component {
     render() {
         return (
             <div className="navbar">
-                <Link to="/" className="styledLink">Home</Link>
+                <Router>
+                    <Link to="/" className="styledLink">Home</Link>
+                </Router>
             </div>
         )
     }

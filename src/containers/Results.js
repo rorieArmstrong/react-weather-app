@@ -17,7 +17,6 @@ class Results extends Component {
     componentDidMount(){
         const str = this.props.match.params.city
         const arr = str.split('&')
-        console.log(arr)
         this.setState({
                 city: arr[0],
                 country: arr[1]
@@ -40,7 +39,7 @@ class Results extends Component {
                 <div>
                     <NavBar/>
                     <div className="body">
-                        <h3>Loading..</h3>
+                        <h3>Loading...</h3>
                     </div>
                 </div>)
         }
