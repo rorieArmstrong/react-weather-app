@@ -9,8 +9,8 @@ class Search extends Component {
           country: '',
           data: null
         }
-        this.handleChange = this.handleChangeCity.bind(this);
-        this.handleChange = this.handleChangeCountry.bind(this);
+        this.handleChangeCity = this.handleChangeCity.bind(this);
+        this.handleChangeCountry = this.handleChangeCountry.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -26,9 +26,13 @@ class Search extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        fetch(`api.openweathermap.org/data/2.5/weather?q=London`)
-        .then(response => response.json)
+        console.log(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&APPID=c0abf36037001046e84d8c4e775ceb72`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&APPID=c0abf36037001046e84d8c4e775ceb72`)
+        .then(response => response.json())
+        .then(response => console.log(response))
         .then(data => {return this.setState({data: data})})
+        .catch(error => console.log(error))
+        .then(console.log(this.state))
     };
 
     render() {
