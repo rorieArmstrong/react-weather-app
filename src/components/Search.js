@@ -26,20 +26,17 @@ class Search extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        console.log(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&APPID=c0abf36037001046e84d8c4e775ceb72`)
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&APPID=c0abf36037001046e84d8c4e775ceb72`)
         .then(response => response.json())
-        .then(response => console.log(response))
         .then(data => {return this.setState({data: data})})
         .catch(error => console.log(error))
-        .then(console.log(this.state))
     };
 
     render() {
         return (
             <div className="container">
                 <h3>Weather Report</h3>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} data-testid="search-form">
                     <input type="text" placeholder="City" value={this.state.value} onChange={this.handleChangeCity} />
                     <input type="text" placeholder="Country" value={this.state.value} onChange={this.handleChangeCountry} />
                     <input type="submit" value="Search" />
