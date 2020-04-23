@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import NavBar from '../components/NavBar';
+import Weather from '../components/Weather';
+import Image from '../components/Image';
 import "./Styling.css"
 
 
@@ -8,8 +11,8 @@ class Results extends Component {
             <div>
                 <NavBar/>
                 <div className="body">
-                    <Search/>
-                    <Image search="weather"/>
+                    <Weather city={this.props.match.params.city}/>
+                    <Image search={this.props.match.params.city}/>
                 </div>
             </div>
         );
